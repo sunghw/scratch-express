@@ -1,15 +1,33 @@
 const express = require('express');
+const routes = require("./api-routes");
 
+// db related
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const app = express();
-const routes = require("./api-routes")
 
 /* Middlewares */
-// middleware that json parses the req.body
-app.use(express.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+ }));
+app.use(bodyParser.json());
+
+
+/* DB setup */
+// Connect to Mongoose and set connection variable
+// Deprecated: mongoose.connect('mongodb://localhost/resthub');
+mongoose.connect(
+    'mongodb://localhost/resthub', 
+    { useNewUrlParser: true, useUnifiedTopology: true});
+const db = mongoose.connection;
+if(!db)
+    console.log("Error connecting db")
+else
+    console.log("Db connected successfully")
+
 
 /* routes */
-
 app.use('/api', routes);// all routes starting with /api/*
 
 app.get('/', (req, res) => {
