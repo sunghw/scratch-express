@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const Joi = require('joi');
+import * as contactController from './controllers/contactController';
+
 router.get('/', (req, res) => {
     res.json({
         status: 'API Its Working',
@@ -7,6 +9,9 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/contacts', contactController.index);
+
+    
 const courses = [
     { id: 1, name: 'course 1'},
     { id: 2, name: 'course 2'},

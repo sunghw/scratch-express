@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "devstart": "nodemon index.js"
+    "start": "node -r esm index.js",
+    "devstart": "nodemon -r esm index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "joi": "^14.3.1",
     "mongoose": "^5.9.5",
