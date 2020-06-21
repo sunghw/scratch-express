@@ -9,9 +9,12 @@ router.get('/', (req, res) => {
     });
 });
 
+/* contact CRUD with controller and mongodb */
 router.get('/contacts', contactController.index);
+router.post('/contacts/create', contactController.create);
 
-    
+
+/* courses CRUD with fake data no controller */
 const courses = [
     { id: 1, name: 'course 1'},
     { id: 2, name: 'course 2'},
